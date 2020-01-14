@@ -1,0 +1,323 @@
+@font-face { font-family: "cabin"; src: url("../../fonts/cabin.ttf");}
+@font-face { font-family: "cabinBold"; src: url("../../fonts/cabinBold.ttf");}
+@font-face { font-family: "covesLight"; src: url("../../fonts/covesLight.otf");}
+@font-face { font-family: "covesBold"; src: url("../../fonts/covesBold.otf");}
+@font-face { font-family: "lombok"; src: url("../../fonts/lombok.otf");}
+
+
+.notif {
+    display: none;
+}
+
+
+body {
+    margin:0;
+    padding: 0;
+    font-family: sans-serif;
+    background-size: 100%;
+}
+
+/* ************************************** NAVBAR ************************************** */
+/* ************************************** NAVBAR ************************************** */
+/* ************************************** NAVBAR ************************************** */
+.navbar {
+    padding-left: 33px;
+    padding-right: 33px;
+    position: absolute;
+    background-color: rgba(0,0,0,0.0);
+    box-shadow: none;
+}
+
+
+.navbar .brand-logo {
+    font-family: lombok;
+    font-size: 24px;
+}
+
+.navbar .brand-logo:hover {
+    color: #831783;
+}
+
+.navbar li a {
+    font-family: cabin;
+}
+
+
+
+/* ************************************** DASHBOARD ************************************** */
+/* ************************************** DASHBOARD ************************************** */
+/* ************************************** DASHBOARD ************************************** */
+
+.dashboard .presentation {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    /*
+    background-image: url("../../images/wood/wood6.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    */
+    background-image: linear-gradient(to left, #840c61, #700a58, #5d074f, #4b0545, #3a033a);
+}
+
+
+.dashboard .presentation .top  {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 166px;
+    padding-right: 166px;
+
+}
+
+.dashboard .presentation .top .slogan h1 {
+    font-family: lombok;
+    font-size: 99px;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 0;
+}
+
+.dashboard .presentation .top .slogan h2 {
+    font-family: lombok;
+    font-size: 44px;
+    color: #ffffff;
+    margin: 0;
+    color: #831783;
+}
+
+.dashboard .presentation .top img {
+    width: 55vh;
+    margin-bottom: 16.5vh;
+    object-fit: contain;
+    z-index: 2;
+    align-self: center;
+    -webkit-animation:spin 15s linear infinite;
+    -moz-animation:spin 15s linear infinite;
+    animation:spin 15s linear infinite;
+}
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+.dashboard .presentation .bottom  {
+    background: white;
+    height: 35%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 7100%;
+    border-top-right-radius: 1100%;
+}
+
+.dashboard .presentation .bottom .center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-bottom: -33px;
+}
+
+.dashboard .presentation .bottom .center p {
+    color: #831783;
+    font-family: cabin;
+    font-size: 22px;
+    margin-bottom: 4px;
+}
+
+.dashboard .presentation .bottom .center:hover p {
+    color: #3a033a;
+}
+
+.dashboard .presentation .bottom .center .pijl {
+    height: 13px;
+    width: 13px;
+    background-image: url("../../images/down-button.png");
+    background-size: 13px;
+    background-position: center;
+}
+
+
+
+/* ************ PRODUCT LIST ************ */
+/* ************ PRODUCT LIST ************ */
+/* ************ PRODUCT LIST ************ */
+.dashboard .dashboard-child {
+    display: flex;
+    flex-direction: column;
+    border-top: 13px solid #ffffff;
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.dashboard .dashboard-child .product-list {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.dashboard .dashboard-child .product-list a {
+    /* background: linear-gradient(to left top, #840c61, #700a58, #5d074f, #4b0545, #3a033a); */
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    margin: 2.5%;
+    transition: all .2s ease-in-out;
+    /*
+    -webkit-box-shadow: 0px 6px 26px -2px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 6px 26px -2px rgba(0,0,0,0.5);
+    box-shadow: 0px 6px 26px -2px rgba(0,0,0,0.5);
+    */
+}
+
+.dashboard .dashboard-child .product-list a .product-image {
+    position: relative;
+    height: 233px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+
+.dashboard .dashboard-child .product-list a .product-title {
+    background: linear-gradient(to left top, #840c61, #700a58, #5d074f, #4b0545, #3a033a);
+    padding: 4px;
+    margin: 0;
+    text-align: center;
+    font-size: 24px;
+    font-family: lombok;
+    color: white;
+    text-transform: uppercase;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color: transparent;
+    z-index: 3;
+}
+
+/* ************ HOVER ************** */
+.dashboard .dashboard-child .product-list a:hover {
+    transform: scale(1.1);
+}
+
+.dashboard .dashboard-child .product-list a:hover .product-image {
+    -webkit-animation:spin 15s linear infinite;
+    -moz-animation:spin 15s linear infinite;
+    animation:spin 15s linear infinite;;
+}
+
+.dashboard .dashboard-child .product-list a .product-image { background-image: url("../../images/product/product1.jpg");}
+
+.dashboard .dashboard-child .product-list a:nth-child(1) .product-image { background-image: url("../../images/product/product1.jpg");}
+.dashboard .dashboard-child .product-list a:nth-child(2) .product-image { background-image: url("../../images/product/product2.jpg");}
+.dashboard .dashboard-child .product-list a:nth-child(3) .product-image { background-image: url("../../images/product/product3.jpg");}
+.dashboard .dashboard-child .product-list a:nth-child(4) .product-image { background-image: url("../../images/product/product4.jpg");}
+.dashboard .dashboard-child .product-list a:nth-child(5) .product-image { background-image: url("../../images/product/product5.jpg");}
+.dashboard .dashboard-child .product-list a:nth-child(6) .product-image { background-image: url("../../images/product/product6.jpg");}
+.dashboard .dashboard-child .product-list a:nth-child(7) .product-image { background-image: url("../../images/product/product7.jpg");}
+.dashboard .dashboard-child .product-list a:nth-child(8) .product-image { background-image: url("../../images/product/product8.jpg");}
+.dashboard .dashboard-child .product-list a:nth-child(9) .product-image { background-image: url("../../images/product/product9.jpg");}
+.dashboard .dashboard-child .product-list a:nth-child(10) .product-image { background-image: url("../../images/product/product10.jpg");}
+.dashboard .dashboard-child .product-list a:nth-child(11) .product-image { background-image: url("../../images/product/product11.jpg");}
+.dashboard .dashboard-child .product-list a:nth-child(12) .product-image { background-image: url("../../images/product/product12.jpg");}
+
+
+
+
+
+
+/* ************************************** SIGN UP ************************************** */
+/* ************************************** SIGN UP ************************************** */
+/* ************************************** SIGN UP ************************************** */
+
+.container {
+    background: linear-gradient(to left top, #840c61, #700a58, #5d074f, #4b0545, #3a033a);
+    min-height: 100vh;
+    padding: 33px;
+    padding-top: 99px;
+    max-width: none;
+    width: 100%;
+}
+
+@media only screen and (min-width: 601px) {
+    .navbar {
+        padding-left: 33px;
+        padding-right: 33px;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .navbar .brand-logo {
+        transform: none;
+        left: 33px;
+    }
+}
+
+
+/* ****************************** */
+@media only screen and (max-width: 1025px) {
+
+    .dashboard .presentation .top {
+        padding-left: 9vw;
+        padding-right: 9vw;
+    }
+
+    .dashboard .presentation .top .slogan h1 {
+        font-size: 66px;
+    }
+
+    
+    .dashboard .presentation .top img {
+        width: 33vh;
+    }
+}
+
+
+@media only screen and (max-width: 666px) {
+
+    .navbar .brand-logo {
+        font-size: 13px;
+    }
+
+    .dashboard .presentation .top {
+        flex-direction: column;
+    }
+    .dashboard .presentation .top .slogan h1 {
+        font-size: 44px;
+    }
+
+    .dashboard .presentation .top .slogan h2 {
+        font-size: 33px;
+    }
+
+    .dashboard .presentation .top img {
+        margin-top: 33px;
+    }
+
+    .dashboard .dashboard-child .product-list a {
+        width: 45%;
+    }
+
+    .dashboard .dashboard-child .product-list a .product-image {
+        height: 166px;
+    }
+
+    nav ul a.btn-floating {
+        display: none;
+    }
+}
+
+.product {
+    text-align: center;
+}
+
+
+
+
