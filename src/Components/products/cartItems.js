@@ -3,8 +3,11 @@ import React, { Component } from 'react';
 export default class CartItems extends Component {
     constructor() {
         super();
-        this.state = {items: null};
-        // this.state = JSON.parse(window.localStorage.getItem('cartProducts')) 
+        this.state = {
+            items: null,
+            uid: null,
+            orderDetail: null
+        };
       }
     componentWillMount() {
 
@@ -23,15 +26,26 @@ export default class CartItems extends Component {
           <div className="container white-text text-darken-3">
                 <h5 className="white-text text-darken-3">Products in your Cart</h5>
         <div>
-        <ol type="1">
             {
                 this.state.items && this.state.items.map((item, i)=>
                     
-                <li key={i}>{item.title}</li>
+                <div className="card" key={i}>
+                    <div className="card-content black-text" style={{display:'flex', justifyContent:'space-between'}}>
+                     <span>{item.title}</span>
+           <div style={{display:'flex', justifyContent:'space-between'}}>
+               <div>
+               <button className="btn pink lighten-1 z-depth-0">-</button>
+            <span style={{margin:'20px'}}>{item.quantity}</span>
+            <button className="btn pink lighten-1 z-depth-0">+</button>
+
+               </div>
+            <button className="btn pink lighten-1 z-depth-0" style={{marginLeft:'20px'}}>Remove</button>
+           </div>
+                    </div>
+                     </div>
                 )
             }
-</ol>
-<div>
+<div style={{marginTop:'40px'}}>
 <form onSubmit ={this.handleSubmit} >
                 <div className="input-field">
                 <label className= "white-text" htmlFor="title">Name</label>
