@@ -11,6 +11,7 @@ return(
      <li><NavLink exact to='/' className='btn btn-floating red lighten-1'>
      {props.profile.initials}
      </NavLink></li>
+     <li><NavLink to='/cartitems'>Cart</NavLink></li>
    </ul>
 )
 }
