@@ -7,6 +7,7 @@ import SignIn from './Components/auth/SignIn'
 import SignUp from './Components/auth/SignUp'
 import CreateProduct from './Components/products/CreateProduct'
 //import ProductSummary from './Components/products/ProductSummary'
+import CartItems from './Components/products/cartItems'
 
 
 class App extends Component {
@@ -21,6 +22,7 @@ class App extends Component {
         <Route path='/signin' component={SignIn} />
         <Route path='/signup' component={SignUp} />
         <Route path='/createproduct' component={CreateProduct} />
+        <Route path='/cartitems' component={CartItems} />
       </Switch>
       </div>
       </BrowserRouter>
