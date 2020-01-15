@@ -1,17 +1,20 @@
 import React from 'react';
 import ProductSummary from './ProductSummary'
 import {Link} from 'react-router-dom'
-import {
-    useCallback
-  } from "react";
-  
+
 const ProductList = (props) =>{
     
     const {products} = props;
 
     function addToCart(pro) {
-        console.log("pro", pro)
-        // window.localStorage.setItem('product', pro);
+        let items = [];
+        items = JSON.parse(window.localStorage.getItem('cartProducts'));
+        console.log("items", items);
+        pro["quantity"] = 1;
+        delete pro.createdAt;
+        console.log("pro", pro);
+        items.push(pro);
+        window.localStorage.setItem('cartProducts', JSON.stringify(items));
     }
 
     return(
