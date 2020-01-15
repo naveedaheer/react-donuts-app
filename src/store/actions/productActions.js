@@ -6,11 +6,9 @@ export const createProduct = (product) => {
             ...product,
             createdAt: new Date()
         }).then(() =>{
-            console.log("worksss")
             dispatch({ type:'CREATE_PRODUCT_SUCCES'});
 
         }).catch((err)=> {
-            console.log("error", err)
             dispatch({type: 'CREATE_PRODUCT_ERROR'}, err);
         });
     }
