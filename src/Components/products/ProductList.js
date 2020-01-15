@@ -7,13 +7,14 @@ const ProductList = (props) =>{
     const {products} = props;
 
     function addToCart(pro) {
+        let product = pro;
         let items = [];
         items = JSON.parse(window.localStorage.getItem('cartProducts')) || [];
         console.log("items", items);
-        pro["quantity"] = 1;
-        delete pro.createdAt;
-        console.log("pro", pro);
-        items.push(pro);
+        product["quantity"] = 1;
+        delete product.createdAt;
+        console.log("product", product);
+        items.push(product);
         window.localStorage.setItem('cartProducts', JSON.stringify(items));
     }
 
@@ -25,7 +26,7 @@ const ProductList = (props) =>{
                         <Link to={'/product/' + product.id} key={product.id}  >
                         <ProductSummary  key={product.id} product={product}  />
                         </Link>
-                        <button onClick={() => addToCart(product)}>Add to Cart</button>
+                        <button onClick={() => addToCart(product)} className="btn pink lighten-1 z-depth-0">Add to Cart</button>
                     </div>
                 )
             })}
