@@ -17,14 +17,4 @@ const ProductSummary = ({product}) =>{
     )
   }
 
-  // const Ball = props => {
-  //   const onClick = useCallback((a, b) => {
-  //     // do something with a, b and props.x
-  //   }, [props.x]);
-  
-  //   return (
-  //     <Something onClick={onClick} />
-  //   );
-  // }
-
 export default ProductSummary
