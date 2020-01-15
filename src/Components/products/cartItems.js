@@ -17,7 +17,8 @@ export default class CartItems extends Component {
     render() {
       const message = `The current state is ${this.state.items[0].title}.`;
       return (
-          <div>
+          <div className="container white-text text-darken-3">
+                <h5 className="white-text text-darken-3">Products in your cart</h5>
         <div>
         <ol type="1">
             {
@@ -27,6 +28,7 @@ export default class CartItems extends Component {
                 )
             }
 </ol>
+<button>Checkout</button>
         </div>
           </div>
       );
