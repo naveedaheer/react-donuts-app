@@ -9,6 +9,7 @@ class CreateProduct extends Component {
     state = {
         title: '',
         content:'',
+        price: '',
         image: null,
         url : ''
     }
@@ -37,10 +38,11 @@ class CreateProduct extends Component {
             const progress = Math.round(
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100
             );
+            // console.log('progress', progress)
         },
         error => {
             // Error function ...
-            console.log(error);
+            // console.log(error);
         },
         () => {
             // complete function ...
@@ -50,7 +52,12 @@ class CreateProduct extends Component {
             .getDownloadURL()
             .then(url => {
                 this.setState({ url });
-                this.props.createProduct(this.state)
+                this.props.createProduct({
+                    title: this.state.title,
+                    content: this.state.content,
+                    price: this.state.price,
+                    imageURL : this.state.url
+                })
                 this.props.history.push('/');
             });
         });
@@ -70,6 +77,10 @@ class CreateProduct extends Component {
                 <div className="input-field">
                 <label className= "white-text"htmlFor="content">Product details</label>
                 <textarea  id="content" className="white-text materialize-textarea" onChange={this.handleChange}></textarea>
+                </div>
+                <div className="input-field">
+                <label className= "white-text"htmlFor="price">Price</label>
+                <input id="price" type="number" className="white-text materialize-textarea" onChange={this.handleChange} />
                 </div>
                 <div className="file-field input-field">
                 <div className="btn pink lighten-1 z-depth-0">
