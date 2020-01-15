@@ -8,7 +8,7 @@ const ProductList = (props) =>{
 
     function addToCart(pro) {
         let items = [];
-        items = JSON.parse(window.localStorage.getItem('cartProducts'));
+        items = JSON.parse(window.localStorage.getItem('cartProducts')) || [];
         console.log("items", items);
         pro["quantity"] = 1;
         delete pro.createdAt;
