@@ -37,6 +37,16 @@ export default class CartItems extends Component {
         }
     }
 
+    removeItem(i){
+        let itemsCopy = JSON.parse(JSON.stringify(this.state.items))
+        itemsCopy.splice(i,1);
+        this.setState({
+            items : itemsCopy
+        });
+        window.localStorage.clear();
+        window.localStorage.setItem('cartProducts', JSON.stringify(itemsCopy));
+    }
+
     render() {
       return (
           <div className="container white-text text-darken-3">
@@ -52,7 +62,7 @@ export default class CartItems extends Component {
                                     <span style={{margin:'20px'}}>{item.quantity}</span>
                                     <button className="btn pink lighten-1 z-depth-0"  onClick={() => this.updateQuantity(i,'+')}>+</button>
                                 </div>
-                                <button className="btn pink lighten-1 z-depth-0" style={{marginLeft:'20px'}}>Remove</button>
+                                <button className="btn pink lighten-1 z-depth-0" onClick={() => this.removeItem(i)} style={{marginLeft:'20px'}}>Remove</button>
                             </div>
                         </div>
                     </div>
