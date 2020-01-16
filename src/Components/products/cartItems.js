@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
+import {connect } from 'react-redux';
+import {orderSubmit} from '../../store/actions/orderActions'
 
-export default class CartItems extends Component {
+
+class CartItems extends Component {
     constructor() {
         super();
         this.state = {
             items: null,
-            uid: null,
-            orderDetail: null
+            orderPersonName: '',
+            orderDetails : ''
         };
       }
 
@@ -18,8 +21,20 @@ export default class CartItems extends Component {
     
     handleSubmit = (e) => {
         e.preventDefault();
+        this.props.orderSubmit({
+            uid : this.props.auth.uid,
+            orderPersonName : this.state.orderPersonName,
+            orderDetails : this.state.orderDetails,
+            products: this.state.items
+        })
+        this.props.history.push('/');
     }
 
+    handleChange = (e) => {
+        this.setState({
+            [e.target.id]: e.target.value
+        })
+    }
     updateQuantity(i, sign) {
          if(sign==='+'){
             let itemsCopy = JSON.parse(JSON.stringify(this.state.items))
@@ -72,11 +87,11 @@ export default class CartItems extends Component {
                     <form onSubmit = {this.handleSubmit}>
                         <div className="input-field">
                             <label className= "white-text" htmlFor="title">Name</label>
-                            <input className= "white-text" type="text" id="title" onChange={this.handleChange} />
+                            <input className= "white-text" type="text" id="orderPersonName" onChange={this.handleChange} />
                         </div>
                         <div className="input-field">
                             <label className= "white-text"htmlFor="content">Order Details(Optional)</label>
-                            <textarea  id="content" className="white-text materialize-textarea" onChange={this.handleChange}></textarea>
+                            <textarea  id="orderDetails" className="white-text materialize-textarea" onChange={this.handleChange}></textarea>
                         </div>
                         <div className="input-field">
                             <button className="btn pink lighten-1 z-depth-0">Checkout</button>
@@ -88,3 +103,21 @@ export default class CartItems extends Component {
         );
     }
   }
+
+  const mapStateToProps = (state) => {
+   console.log("state", state)
+    return {
+        auth: state.firebase.auth,
+        // auth: state.orderReducer
+
+    }
+  }
+
+  const mapDispatchToProps = dispatch => {
+      return {
+        orderSubmit: (order) => dispatch (orderSubmit(order))
+      }
+
+  }
+
+  export default connect(mapStateToProps,mapDispatchToProps) (CartItems)
