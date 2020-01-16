@@ -9,14 +9,17 @@ class CartItems extends Component {
         this.state = {
             items: null,
             orderPersonName: '',
-            orderDetails : ''
+            orderDetails : '',
+            totalAmount: 0
         };
       }
 
     componentWillMount() {
+        const products = JSON.parse(window.localStorage.getItem('cartProducts'));
         this.setState({
-            items : JSON.parse(window.localStorage.getItem('cartProducts'))
+            items : products
         })
+        this.calculateAmount(products);
     }
     
     handleSubmit = (e) => {
@@ -25,7 +28,8 @@ class CartItems extends Component {
             uid : this.props.auth.uid,
             orderPersonName : this.state.orderPersonName,
             orderDetails : this.state.orderDetails,
-            products: this.state.items
+            products: this.state.items,
+            totalAmount: this.state.totalAmount
         })
         this.props.history.push('/');
     }
@@ -36,21 +40,31 @@ class CartItems extends Component {
         })
     }
     updateQuantity(i, sign) {
+        let itemsCopy = JSON.parse(JSON.stringify(this.state.items))
          if(sign==='+'){
-            let itemsCopy = JSON.parse(JSON.stringify(this.state.items))
             itemsCopy[i].quantity = itemsCopy[i].quantity+1
             this.setState({
                 items : itemsCopy
             })
         }
         else {
-            let itemsCopy = JSON.parse(JSON.stringify(this.state.items))
             itemsCopy[i].quantity = itemsCopy[i].quantity-1
             this.setState({
                 items : itemsCopy
             })
         }
+        this.calculateAmount(itemsCopy)
     }
+
+    calculateAmount = (itemsCopy) => {
+        let amount = 0;
+        for (let i = 0; i < itemsCopy.length; i++) {
+            amount = amount + (itemsCopy[i].price * itemsCopy[i].quantity)
+          }
+          this.setState({
+              totalAmount: amount
+          })
+      }
 
     removeItem(i){
         let itemsCopy = JSON.parse(JSON.stringify(this.state.items))
@@ -82,7 +96,9 @@ class CartItems extends Component {
                         </div>
                     </div>
                 )}
+            <h5 className="white-text text-darken-3">Total Amount: {this.state.totalAmount}</h5>
 
+                
                 <div style={{marginTop:'40px'}}>
                     <form onSubmit = {this.handleSubmit}>
                         <div className="input-field">
@@ -105,7 +121,6 @@ class CartItems extends Component {
   }
 
   const mapStateToProps = (state) => {
-   console.log("state", state)
     return {
         auth: state.firebase.auth,
         // auth: state.orderReducer
