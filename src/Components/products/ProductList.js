@@ -10,19 +10,17 @@ const ProductList = (props) =>{
         let product = pro;
         let items = [];
         items = JSON.parse(window.localStorage.getItem('cartProducts')) || [];
-        console.log("items", items);
         product["quantity"] = 1;
         delete product.createdAt;
-        console.log("product", product);
         items.push(product);
         window.localStorage.setItem('cartProducts', JSON.stringify(items));
     }
 
     return(
         <div className="product-list">
-            {products && products.map( product => {
+            {products && products.map( (product, i) => {
                 return (
-                    <div style={{display : 'contents'}}>
+                    <div key={i} style={{display : 'contents'}}>
                         <Link to={'/product/' + product.id} key={product.id}  >
                         <ProductSummary  key={product.id} product={product}  />
                         </Link>
