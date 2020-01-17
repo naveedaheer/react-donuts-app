@@ -8,6 +8,8 @@ import thunk from 'redux-thunk'
 import { reduxFirestore , getFirestore } from 'redux-firestore'
 import { reactReduxFirebase, getFirebase } from 'react-redux-firebase'
 import fbConfig from './config/fbConfig'
+import * as serviceWorker from './serviceWorker';
+
 
 const store = createStore(rootReducer, 
      compose(
@@ -20,5 +22,7 @@ const store = createStore(rootReducer,
    store.firebaseAuthIsReady.then(() =>{
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
+
+serviceWorker.register();
 
 })
