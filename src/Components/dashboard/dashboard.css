@@ -169,7 +169,7 @@ body {
     /* background: linear-gradient(to left top, #840c61, #700a58, #5d074f, #4b0545, #3a033a); */
     display: flex;
     flex-direction: column;
-    width: 20%;
+    width: 100%;
     margin: 2.5%;
     transition: all .2s ease-in-out;
     /*

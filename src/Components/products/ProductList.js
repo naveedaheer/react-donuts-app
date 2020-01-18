@@ -20,11 +20,11 @@ const ProductList = (props) =>{
         <div className="product-list">
             {products && products.map( (product, i) => {
                 return (
-                    <div key={i} style={{display : 'contents'}}>
+                    <div key={i} style={{display : 'grid', margin:'15px'}}>
                         <Link to={'/product/' + product.id} key={product.id}  >
                         <ProductSummary  key={product.id} product={product}  />
                         </Link>
-                        <button onClick={() => addToCart(product)} className="btn pink lighten-1 z-depth-0">Add to Cart</button>
+                <button onClick={() => addToCart(product)} className="btn pink lighten-1 z-depth-0">Add to Cart {product.title}</button>
                     </div>
                 )
             })}
