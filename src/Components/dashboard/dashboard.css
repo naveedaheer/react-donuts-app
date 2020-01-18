@@ -213,8 +213,8 @@ body {
     animation:spin 15s linear infinite;;
 }
 
-.dashboard .dashboard-child .product-list a .product-image { background-image: url("../../images/product/product1.jpg");}
-
+/* .dashboard .dashboard-child .product-list a .product-image { background-image: url("../../images/product/product1.jpg");} */
+/* 
 .dashboard .dashboard-child .product-list a:nth-child(1) .product-image { background-image: url("../../images/product/product1.jpg");}
 .dashboard .dashboard-child .product-list a:nth-child(2) .product-image { background-image: url("../../images/product/product2.jpg");}
 .dashboard .dashboard-child .product-list a:nth-child(3) .product-image { background-image: url("../../images/product/product3.jpg");}
@@ -226,7 +226,7 @@ body {
 .dashboard .dashboard-child .product-list a:nth-child(9) .product-image { background-image: url("../../images/product/product9.jpg");}
 .dashboard .dashboard-child .product-list a:nth-child(10) .product-image { background-image: url("../../images/product/product10.jpg");}
 .dashboard .dashboard-child .product-list a:nth-child(11) .product-image { background-image: url("../../images/product/product11.jpg");}
-.dashboard .dashboard-child .product-list a:nth-child(12) .product-image { background-image: url("../../images/product/product12.jpg");}
+.dashboard .dashboard-child .product-list a:nth-child(12) .product-image { background-image: url("../../images/product/product12.jpg");} */
 
 
 
