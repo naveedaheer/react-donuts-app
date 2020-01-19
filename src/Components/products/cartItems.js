@@ -31,6 +31,8 @@ class CartItems extends Component {
             products: this.state.items,
             totalAmount: this.state.totalAmount
         })
+        alert("Order Submitted");
+        window.localStorage.clear();
         this.props.history.push('/');
     }
 
@@ -57,13 +59,16 @@ class CartItems extends Component {
     }
 
     calculateAmount = (itemsCopy) => {
-        let amount = 0;
-        for (let i = 0; i < itemsCopy.length; i++) {
-            amount = amount + (itemsCopy[i].price * itemsCopy[i].quantity)
-          }
-          this.setState({
-              totalAmount: amount
-          })
+        if(itemsCopy){
+
+            let amount = 0;
+            for (let i = 0; i < itemsCopy.length; i++) {
+                amount = amount + (itemsCopy[i].price * itemsCopy[i].quantity)
+            }
+            this.setState({
+                totalAmount: amount
+            })
+        }
       }
 
     removeItem(i){
@@ -79,12 +84,20 @@ class CartItems extends Component {
     render() {
       return (
           <div className="container white-text text-darken-3">
-            <h5 className="white-text text-darken-3">Products in your Cart</h5>
+           {
+this.state.items ? <div>
+           <h5 className="white-text text-darken-3">Products in your Cart</h5>
             <div>
                 {this.state.items && this.state.items.map((item, i)=>
                     <div className="card" key={i}>
                         <div className="card-content black-text" style={{display:'flex', justifyContent:'space-between'}}>
+                            <div>
+
                             <span>{item.title}</span>
+                <div>Price: {item.price}</div>
+                <div>{item.content}</div>
+                            </div>
+
                             <div style={{display:'flex', justifyContent:'space-between'}}>
                                 <div>
                                     <button className="btn pink lighten-1 z-depth-0" onClick={() => this.updateQuantity(i,'-')}>-</button>
@@ -110,11 +123,14 @@ class CartItems extends Component {
                             <textarea  id="orderDetails" className="white-text materialize-textarea" onChange={this.handleChange}></textarea>
                         </div>
                         <div className="input-field">
-                            <button className="btn pink lighten-1 z-depth-0">Checkout</button>
+                            <button className="btn pink lighten-1 z-depth-0">Submit Order</button>
                         </div>
                     </form>
                 </div>
             </div>
+            </div>
+    : <h5 className="white-text text-darken-3">No products in your Cart</h5> }
+
           </div>
         );
     }
