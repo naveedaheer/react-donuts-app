@@ -24,7 +24,7 @@ const ProductList = (props) =>{
                         <Link to={'/product/' + product.id} key={product.id}  >
                         <ProductSummary  key={product.id} product={product}  />
                         </Link>
-                <button onClick={() => addToCart(product)} className="btn pink lighten-1 z-depth-0">Add to Cart {product.title}</button>
+                <button onClick={() => addToCart(product)} className="btn pink lighten-1 z-depth-0">Add to Cart</button>
                     </div>
                 )
             })}

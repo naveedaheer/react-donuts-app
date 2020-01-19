@@ -6,7 +6,6 @@ import productImage from "../../images/product/product1.jpg"
 //import ProductDetails from './ProductDetails'
 
 const ProductSummary = ({product}) =>{
-console.log("pro", product);
     return(
         <div className="product" >
           <div>
